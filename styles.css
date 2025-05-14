@@ -1,0 +1,283 @@
+/* Main Styles for Cereal Visualization */
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #343a40;
+    margin-top: 0;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.visualization-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Control Panel Styles */
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.btn-group {
+    margin-bottom: 10px;
+}
+
+.btn-outline-primary, .btn-outline-success, .btn-outline-secondary {
+    font-size: 13px;
+    padding: 5px 10px;
+}
+
+.btn-outline-primary:hover, .btn-outline-success:hover {
+    color: white;
+}
+
+/* Reset Button */
+#resetButton {
+    margin-bottom: 15px;
+    padding: 6px 12px;
+    font-weight: 500;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: absolute;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 12px;
+    z-index: 100;
+    max-width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.tooltip strong {
+    color: #f8f9fa;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Parallel Coordinates Styles */
+.parallel-axis text {
+    font-size: 10px;
+    fill: #495057;
+}
+
+.parallel-axis line, .parallel-axis path {
+    stroke: #ced4da;
+}
+
+.parallel-axis .domain {
+    stroke: #adb5bd;
+}
+
+/* Bar Chart Styles */
+.bar {
+    fill: #6c757d;
+    transition: fill 0.3s;
+}
+
+.bar:hover {
+    fill: #fd8d3c;
+}
+
+.bar.highlighted {
+    fill: #fd8d3c;
+    stroke: #e65100;
+    stroke-width: 1.5;
+}
+
+.sugar-bar {
+    fill: #4dabf5;
+}
+
+.fiber-bar {
+    fill: #82ca9d;
+}
+
+.x-axis text, .y-axis text {
+    font-size: 10px;
+    fill: #495057;
+}
+
+.x-axis line, .x-axis path, .y-axis line, .y-axis path {
+    stroke: #ced4da;
+}
+
+/* Treemap Styles */
+.cell rect {
+    transition: fill 0.3s, stroke 0.3s;
+}
+
+.cell text {
+    font-size: 10px;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.cell:hover rect {
+    stroke: #212529;
+    stroke-width: 2;
+}
+
+.highlighted rect {
+    stroke: #212529 !important;
+    stroke-width: 2 !important;
+}
+
+/* Legend Styles */
+.legend text {
+    font-size: 10px;
+    fill: #495057;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    margin-bottom: 0;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.table th {
+    font-weight: 600;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+    padding: 8px;
+    font-size: 13px;
+}
+
+.table td {
+    padding: 8px;
+    border-top: 1px solid #dee2e6;
+    font-size: 12px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Animation Styles */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/* Brushed Elements */
+.brushed {
+    stroke-width: 2;
+    stroke-opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-6 {
+        width: 100%;
+    }
+    
+    .visualization-container {
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    .table th, .table td {
+        padding: 5px;
+        font-size: 11px;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    
+    .btn-outline-primary, .btn-outline-success {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+}
+
+/* Custom checkbox styling for filters */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Active state for buttons */
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-success:not(:disabled):not(.disabled).active {
+    color: white;
+}
+
+/* Loading state */
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+}
+
+.loading::after {
+    content: "Loading...";
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Focus visualization styles */
+.focus-mode .visualization-container {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.3);
+}

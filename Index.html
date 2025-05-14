@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cereal Nutrition Visualization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        .visualization-container {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 4px;
+            pointer-events: none;
+            font-size: 12px;
+            z-index: 10;
+        }
+        .parallel-axis text {
+            font-size: 10px;
+        }
+        .controls {
+            margin-bottom: 15px;
+        }
+        .brushed {
+            stroke-width: 2;
+            stroke-opacity: 1;
+        }
+        .highlighted {
+            stroke: #fd8d3c;
+            stroke-width: 3;
+            fill: #fd8d3c;
+        }
+        .bar {
+            fill: steelblue;
+            transition: fill 0.3s;
+        }
+        .bar:hover {
+            fill: #fd8d3c;
+        }
+        .bar.highlighted {
+            fill: #fd8d3c;
+        }
+        #resetButton {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Cereal Nutrition Interactive Visualization</h1>
+        
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <button id="resetButton" class="btn btn-outline-secondary btn-sm">Reset All Selections</button>
+                
+                <div class="btn-group" role="group">
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterG" class="manufacturer-filter"> General Mills (G)
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterK" class="manufacturer-filter"> Kellogg's (K)
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterP" class="manufacturer-filter"> Post (P)
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterQ" class="manufacturer-filter"> Quaker (Q)
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterR" class="manufacturer-filter"> Ralston (R)
+                    </label>
+                    <label class="btn btn-outline-primary">
+                        <input type="checkbox" id="filterN" class="manufacturer-filter"> Nabisco (N)
+                    </label>
+                </div>
+                
+                <div class="btn-group ms-2" role="group">
+                    <label class="btn btn-outline-success">
+                        <input type="checkbox" id="shelf1" class="shelf-filter"> Shelf 1
+                    </label>
+                    <label class="btn btn-outline-success">
+                        <input type="checkbox" id="shelf2" class="shelf-filter"> Shelf 2
+                    </label>
+                    <label class="btn btn-outline-success">
+                        <input type="checkbox" id="shelf3" class="shelf-filter"> Shelf 3
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="visualization-container">
+                    <h2>Nutritional Profile (Parallel Coordinates)</h2>
+                    <p>Brush along any axis to filter cereals by their nutritional values.</p>
+                    <div id="parallel"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="visualization-container">
+                    <h2>Sugar vs. Fiber Content</h2>
+                    <p>Compare the sugar and fiber content of different cereals.</p>
+                    <div id="barchart"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="visualization-container">
+                    <h2>Cereals by Manufacturer and Calories</h2>
+                    <p>Treemap showing the distribution of cereals by manufacturer and calorie content.</p>
+                    <div id="treemap"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="visualization-container">
+                    <h2>Selected Cereal Details</h2>
+                    <table id="detailsTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Cereal</th>
+                                <th>Manufacturer</th>
+                                <th>Type</th>
+                                <th>Calories</th>
+                                <th>Protein</th>
+                                <th>Fat</th>
+                                <th>Sodium</th>
+                                <th>Fiber</th>
+                                <th>Carbs</th>
+                                <th>Sugars</th>
+                                <th>Shelf</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detailsBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tooltip" class="tooltip" style="opacity: 0;"></div>
+
+    <!-- Load D3.js and other libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    
+    <!-- Load application code -->
+    <script src="js/utils.js"></script>
+    <script src="js/parallel.js"></script>
+    <script src="js/barchart.js"></script>
+    <script src="js/treemap.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
