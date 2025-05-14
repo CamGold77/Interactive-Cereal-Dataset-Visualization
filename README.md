@@ -26,7 +26,7 @@ This web-based application provides an interactive visualization system for expl
 ### Setup Instructions
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/cereal-visualization.git
+   git clone 
    cd cereal-visualization
    ```
 
